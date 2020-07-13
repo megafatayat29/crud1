@@ -24,3 +24,5 @@ Route::post('/pertanyaan', 'PertanyaanController@store'); //menyimpan data baru 
 Route::get('/jawaban/{pertanyaan_id}', 'JawabanController@index'); //menampilkan jawaban dari pertanyaan dg id tertentu
 
 Route::post('/jawaban/{pertanyaan_id}', 'JawabanController@store'); //menyimpan jawaban baru untuk pertanyaan dengan id tertentu
+
+Route::get('/pertanyaan/{id}', 'PertanyaanController@show'); //menampilkan tabel berisi detail pertanyaan

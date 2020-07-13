@@ -8,7 +8,7 @@
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form role="form" action="/pertanyaan" method="POST">
+            <form role="form" action="{{ url("/pertanyaan") }}" method="POST">
                 @csrf
               <div class="card-body">
                 <div class="form-group">
@@ -17,13 +17,15 @@
                 </div>
                 <div class="form-group">
                     <label for="isi">Isi Pertanyaan</label>
-                    <input type="textbox" class="form-control" id="isi" name="isi" placeholder="Masukkan Isi Pertanyaan">
-                  </div>
+                    <textarea class="form-control" id="" name="isi" cols="30" rows="10" placeholder="Masukkan Isi Pertanyaan"></textarea>
+                </div>
+                <input hidden name="tanggal_dibuat" value="{{ \Carbon\Carbon::now() }}">
+                <input hidden name="tanggal_diperbaharui" value="{{ \Carbon\Carbon::now() }}">
               </div>
               <!-- /.card-body -->
 
               <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Buat Pertanyaan</button>
               </div>
             </form>
           </div>

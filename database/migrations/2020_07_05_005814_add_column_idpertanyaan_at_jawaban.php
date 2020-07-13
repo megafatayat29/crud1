@@ -14,8 +14,8 @@ class AddColumnIdpertanyaanAtJawaban extends Migration
     public function up()
     {
         Schema::table('jawaban', function (Blueprint $table) {
-            $table->bigInteger('pertanyaan_id')->unsigned(); 
-            $table->foreign('pertanyaan_id')->references('id')->on('pertanyaan');
+            $table->bigInteger('pertanyaan_id')->unsigned()->nullable(); 
+            $table->foreign('pertanyaan_id')->references('id')->on('pertanyaan')->onDelete('cascade');
         });
     }
 
@@ -26,6 +26,9 @@ class AddColumnIdpertanyaanAtJawaban extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('jawaban', function (Blueprint $table) {
+            $table->dropForeign(['pertanyaan_id']);
+            $table->dropColumn('pertanyaan_id');
+        });
     }
 }

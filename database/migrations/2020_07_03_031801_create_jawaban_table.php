@@ -15,8 +15,9 @@ class CreateJawabanTable extends Migration
         if (!Schema::hasTable('jawaban')){
             Schema::create('jawaban', function (Blueprint $table) {
                 $table->bigIncrements('id');
-                $table->string('isi',255);
-                $table->timestamp('tanggal_dibuat',0);
+                $table->longText('isi');
+                $table->date('tanggal_dibuat')->nullable();
+                $table->date('tanggal_diperbaharui')->nullable();
                 $table->timestamps(0);
             });
         }

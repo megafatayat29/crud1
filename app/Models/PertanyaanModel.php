@@ -16,10 +16,11 @@ class PertanyaanModel {
         return $new_pertanyaan;
     }
     
-    public static function find_by_id($pertanyaan_id){
-        $pertanyaan = DB::table('jawaban')->where('id', $pertanyaan_id)->first();
-        return $pertanyaan;
+    public static function find_by_id($id){
+        $item = DB::table('pertanyaan')->where('id', $id)->first();
+        return $item;
     }
+
 }
 
 ?>

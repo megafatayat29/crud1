@@ -11,14 +11,13 @@ class JawabanModel {
 
     public static function save($data){
         //data _token nya diilangi
-        unset($data["_token"]);
         $new_jawaban = DB::table('jawaban')->insert($data);
         return $new_jawaban;
     }
 
     public static function find_by_id($pertanyaan_id){
-        $item = DB::table('jawaban')->where('id', $pertanyaan_id)->first();
-        return $item;
+        $items = DB::table('jawaban')->where('pertanyaan_id', $pertanyaan_id)->get();
+        return $items;
     }
 }
 

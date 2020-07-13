@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\PertanyaanModel;
+use App\Models\JawabanModel;
 
 class PertanyaanController extends Controller
 {
@@ -23,5 +24,9 @@ class PertanyaanController extends Controller
         return view('pertanyaan.index', compact('pertanyaan'));
     }
 
-    
+    public function show($id){
+        $pertanyaan = PertanyaanModel::find_by_id($id);
+        $items = JawabanModel::find_by_id($id);
+        return view('jawaban.detail', compact('pertanyaan', 'items'));
+    }    
 }

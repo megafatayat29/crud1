@@ -26,25 +26,38 @@
               <table class="table table-head-fixed text-nowrap">
                 <thead>
                   <tr>
-                    <th>ID</th>
-                    <th>Judul</th>
-                    <th>Isi</th>
-                    <th>Tanggal Dibuat</th>
-                    <th>Action</th>
+                    <th>No</th>
+                    <th>List Pertanyaan</th>
+                    <th>Detail Jawaban</th>
+                    <th>Form Jawaban</th>
+                    <th>Detail QnA</th>
                   </tr>
                 </thead>
                 <tbody>
                   {{-- {{ dd($pertanyaan )}} --}}
                     @foreach ($pertanyaan as $key => $item)
                         <tr>
-                            <td>{{ $key+1 }}</td>
-                            <td>{{ $item->judul }}</td>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $item->isi }}</td>
-                            <td>{{ $item->tanggal_dibuat }}</td>
                             <td>
-                                <a href="/jawaban/{{$item->id}}" class="btn btn-sm btn-info">Jawaban</a>
-                                <a href="#" class="btn btn-sm btn-info">Update</a>
-                                <a href="#" class="btn btn-sm btn-warning">Delete</a>
+                              <a href="{{ url('/jawaban/'.$item->id) }}">
+                                <button class="btn btn-success">Lihat Jawaban</button>
+                              </a>
+                            </td>
+                            <td>
+                                <form action="{{ url('/jawaban/'.$item->id) }}" method="POST">
+                                  @csrf
+                                  <input type="text" name="isi">
+                                  <input hidden name="pertanyaan_id" value="{{ $item->id }}">
+                                  <input hidden name="tanggal_dibuat" value="{{ \Carbon\Carbon::now() }}">
+                                  <input hidden name="tanggal_diperbaharui" value="{{ \Carbon\Carbon::now() }}">
+                                  <button type="submit" class="btn btn-success">Submit Jawaban</button>
+                                </form>
+                            </td>
+                            <td>
+                              <a href=" {{ url('/pertanyaan/' . $item->id) }}" >
+                                <button class="btn btn-primary"> Lihat QnA </button>
+                              </a>
                             </td>
                         </tr>
                     @endforeach
