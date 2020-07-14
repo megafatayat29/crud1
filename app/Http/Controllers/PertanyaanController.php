@@ -28,5 +28,23 @@ class PertanyaanController extends Controller
         $pertanyaan = PertanyaanModel::find_by_id($id);
         $items = JawabanModel::find_by_id($id);
         return view('jawaban.detail', compact('pertanyaan', 'items'));
-    }    
+    }   
+    
+    public function edit($id){
+        $pertanyaan = PertanyaanModel::find_by_id($id);
+        return view('pertanyaan.edit', compact('pertanyaan','id'));
+    }
+
+    public function update(Request $request){
+        $data = $request->all();
+        unset($data["_token"]);
+        unset($data["_method"]);
+        PertanyaanModel::update($data);
+        return redirect('/pertanyaan');
+    }
+
+    public function delete($data){
+        PertanyaanModel::delete($data);
+        return redirect('/pertanyaan');
+    }
 }

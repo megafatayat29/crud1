@@ -11,7 +11,7 @@
 
     <h2>Jawaban</h2><br>
     @foreach ($items as $jawaban)
-    <p> {{ $jawaban->isi }}</p>
+    <p> {{ $jawaban->isi }}, {{ $jawaban->tanggal_dibuat }}, {{ $jawaban->tanggal_diperbaharui }}</p>
         
     @endforeach
     </div>

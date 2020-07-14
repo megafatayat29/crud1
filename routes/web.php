@@ -26,3 +26,9 @@ Route::get('/jawaban/{pertanyaan_id}', 'JawabanController@index'); //menampilkan
 Route::post('/jawaban/{pertanyaan_id}', 'JawabanController@store'); //menyimpan jawaban baru untuk pertanyaan dengan id tertentu
 
 Route::get('/pertanyaan/{id}', 'PertanyaanController@show'); //menampilkan tabel berisi detail pertanyaan
+
+Route::get('/pertanyaan/{id}/edit', 'PertanyaanController@edit'); //menampilkan form untuk mengedit pertanyaan
+
+Route::put('/pertanyaan/{id}', 'PertanyaanController@update'); //menyimpan hasil edit pertanyaan
+
+Route::delete('/pertanyaan/{id}', 'PertanyaanController@delete'); //meenghapus pertanyaan

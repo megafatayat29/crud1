@@ -21,6 +21,15 @@ class PertanyaanModel {
         return $item;
     }
 
+    public static function update($data){
+        $update_item = DB::table('pertanyaan')->where('id', $data['id'])->update($data);
+        return $update_item;
+    }
+
+    public static function delete($id){
+        $item = DB::table('pertanyaan')->where('id', $id)->delete();
+        return 'deleted';
+    }
 }
 
 ?>
